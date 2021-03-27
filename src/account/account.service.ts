@@ -22,7 +22,7 @@ export class AccountService {
         return acc;
     }
 
-    getAll(): Promise<Account[]> {
+    async getAll(): Promise<Account[]> {
         return this.accountRepository.find();
     }
  }

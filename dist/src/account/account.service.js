@@ -30,7 +30,7 @@ let AccountService = class AccountService {
         acc.password = dto.password;
         return acc;
     }
-    getAll() {
+    async getAll() {
         return this.accountRepository.find();
     }
 };
