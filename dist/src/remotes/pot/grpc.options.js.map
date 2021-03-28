@@ -1,0 +1,1 @@
+{"version":3,"file":"grpc.options.js","sourceRoot":"","sources":["../../../../src/remotes/pot/grpc.options.ts"],"names":[],"mappings":";;;AAAA,yDAA+D;AAC/D,+BAA4B;AAEd,QAAA,mBAAmB,GAAgB;IAC7C,SAAS,EAAE,yBAAS,CAAC,IAAI;IACzB,OAAO,EAAE;QACP,OAAO,EAAE,KAAK;QACd,GAAG,EAAE,OAAO,CAAC,GAAG,CAAC,uBAAuB;QACxC,SAAS,EAAE,WAAI,CAAC,OAAO,CAAC,GAAG,EAAE,EAAE,oCAAoC,CAAC;KACrE;CACF,CAAC"}

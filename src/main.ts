@@ -10,7 +10,7 @@ const microserviceOptions: GrpcOptions = {
   transport: Transport.GRPC,
   options: {
     package: "rpc",
-    url: '0.0.0.0:5000',
+    url: process.env.GRPC_CONNECTION_URL,
     protoPath: join(process.cwd(), 'src/proto/rpc.proto')
   }
 };
@@ -21,7 +21,7 @@ async function bootstrap() {
   app.connectMicroservice(microserviceOptions);
   await app.startAllMicroservicesAsync();
 
-  await app.listen(process.env.PORT);
+  await app.listen(process.env.PORT_REST);
 }
 
 (async () => await bootstrap())();

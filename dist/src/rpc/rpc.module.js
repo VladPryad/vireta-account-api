@@ -11,12 +11,14 @@ const common_1 = require("@nestjs/common");
 const rpc_service_1 = require("./rpc.service");
 const rpc_controller_1 = require("./rpc.controller");
 const account_module_1 = require("../account/account.module");
+const pot_module_1 = require("../remotes/pot/pot.module");
+const pot_controller_1 = require("../remotes/pot/pot.controller");
 let RpcModule = class RpcModule {
 };
 RpcModule = __decorate([
     common_1.Module({
-        imports: [account_module_1.AccountModule],
-        providers: [rpc_service_1.RpcService],
+        imports: [account_module_1.AccountModule, pot_module_1.PotModule],
+        providers: [rpc_service_1.RpcService, pot_controller_1.default],
         controllers: [rpc_controller_1.RpcController]
     })
 ], RpcModule);

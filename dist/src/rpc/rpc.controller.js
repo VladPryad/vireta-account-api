@@ -12,15 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RpcController = void 0;
 const common_1 = require("@nestjs/common");
 const microservices_1 = require("@nestjs/microservices");
-const account_controller_1 = require("../account/account.controller");
+const pot_controller_1 = require("../remotes/pot/pot.controller");
 const account_service_1 = require("../account/account.service");
+const pot_entity_1 = require("../remotes/pot/entity_interface/pot.entity");
 let RpcController = class RpcController {
-    constructor(accountService) {
+    constructor(accountService, potController) {
         this.accountService = accountService;
+        this.potController = potController;
     }
     async getAll(req) {
         const accounts = await this.accountService.getAll();
         return { account: accounts };
+    }
+    async getAllPotsByAccountId(id) {
+        return this.potController.getAllPotsByAccountId(id);
     }
 };
 __decorate([
@@ -29,9 +34,16 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], RpcController.prototype, "getAll", null);
+__decorate([
+    microservices_1.GrpcMethod("RPC", "GetAllPotsByAccountId"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], RpcController.prototype, "getAllPotsByAccountId", null);
 RpcController = __decorate([
     common_1.Controller('rpc'),
-    __metadata("design:paramtypes", [account_service_1.AccountService])
+    __metadata("design:paramtypes", [account_service_1.AccountService,
+        pot_controller_1.default])
 ], RpcController);
 exports.RpcController = RpcController;
 //# sourceMappingURL=rpc.controller.js.map

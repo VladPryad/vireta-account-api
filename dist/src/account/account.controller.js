@@ -25,7 +25,7 @@ let AccountController = class AccountController {
         return this.accountService.getById(id);
     }
     getAll() {
-        return { account: this.accountService.getAll() };
+        return this.accountService.getAll();
     }
     create(createAccountDto) {
         return this.accountService.create(createAccountDto);
@@ -38,6 +38,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", account_entity_1.default)
 ], AccountController.prototype, "getById", null);
+__decorate([
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AccountController.prototype, "getAll", null);
 __decorate([
     common_1.Post(),
     common_1.HttpCode(common_1.HttpStatus.CREATED),

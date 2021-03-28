@@ -14,8 +14,9 @@ export class AccountController {
         return this.accountService.getById(id);
     }
 
-    getAll(): { account: Promise<Account[]> } {
-        return { account: this.accountService.getAll() };
+    @Get()
+    getAll(): Promise<Account[]> {
+        return this.accountService.getAll();
     }
 
     @Post()

@@ -5,6 +5,21 @@ import "account.proto";
 
 service RPC {
   rpc GetAll(GetAllRequest) returns (GetAllResponse) {}
+  rpc GetAllPotsByAccountId (getAllPotsByAccountIdRequest) returns (getAllPotsByAccountIdResponse);
+}
+
+message Pot {
+  string id = 1;
+  string name = 2;
+  string accountId = 3;
+}
+
+message getAllPotsByAccountIdResponse {
+  repeated Pot pots = 1; 
+}
+
+message getAllPotsByAccountIdRequest {
+  string id = 1; 
 }
 
 message GetAllRequest {
