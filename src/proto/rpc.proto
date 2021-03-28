@@ -8,9 +8,9 @@ service RPC {
 }
 
 message GetAllRequest {
-  account.AccountRequest req = 1;
+  
 }
 
 message GetAllResponse {
-  account.AccountArray res = 1;
+  repeated account.Account account = 1;
 }

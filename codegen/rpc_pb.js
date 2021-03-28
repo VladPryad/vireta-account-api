@@ -51,7 +51,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.rpc.GetAllResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.rpc.GetAllResponse.repeatedFields_, null);
 };
 goog.inherits(proto.rpc.GetAllResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -93,7 +93,7 @@ proto.rpc.GetAllRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.rpc.GetAllRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    req: (f = msg.getReq()) && account_pb.AccountRequest.toObject(includeInstance, f)
+
   };
 
   if (includeInstance) {
@@ -130,11 +130,6 @@ proto.rpc.GetAllRequest.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = new account_pb.AccountRequest;
-      reader.readMessage(value,account_pb.AccountRequest.deserializeBinaryFromReader);
-      msg.setReq(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -164,54 +159,16 @@ proto.rpc.GetAllRequest.prototype.serializeBinary = function() {
  */
 proto.rpc.GetAllRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getReq();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      account_pb.AccountRequest.serializeBinaryToWriter
-    );
-  }
 };
 
 
+
 /**
- * optional account.AccountRequest req = 1;
- * @return {?proto.account.AccountRequest}
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
  */
-proto.rpc.GetAllRequest.prototype.getReq = function() {
-  return /** @type{?proto.account.AccountRequest} */ (
-    jspb.Message.getWrapperField(this, account_pb.AccountRequest, 1));
-};
-
-
-/**
- * @param {?proto.account.AccountRequest|undefined} value
- * @return {!proto.rpc.GetAllRequest} returns this
-*/
-proto.rpc.GetAllRequest.prototype.setReq = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.rpc.GetAllRequest} returns this
- */
-proto.rpc.GetAllRequest.prototype.clearReq = function() {
-  return this.setReq(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.rpc.GetAllRequest.prototype.hasReq = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
+proto.rpc.GetAllResponse.repeatedFields_ = [1];
 
 
 
@@ -244,7 +201,8 @@ proto.rpc.GetAllResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.rpc.GetAllResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    res: (f = msg.getRes()) && account_pb.AccountArray.toObject(includeInstance, f)
+    accountList: jspb.Message.toObjectList(msg.getAccountList(),
+    account_pb.Account.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -282,9 +240,9 @@ proto.rpc.GetAllResponse.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new account_pb.AccountArray;
-      reader.readMessage(value,account_pb.AccountArray.deserializeBinaryFromReader);
-      msg.setRes(value);
+      var value = new account_pb.Account;
+      reader.readMessage(value,account_pb.Account.deserializeBinaryFromReader);
+      msg.addAccount(value);
       break;
     default:
       reader.skipField();
@@ -315,51 +273,52 @@ proto.rpc.GetAllResponse.prototype.serializeBinary = function() {
  */
 proto.rpc.GetAllResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getRes();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getAccountList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
-      account_pb.AccountArray.serializeBinaryToWriter
+      account_pb.Account.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional account.AccountArray res = 1;
- * @return {?proto.account.AccountArray}
+ * repeated account.Account account = 1;
+ * @return {!Array<!proto.account.Account>}
  */
-proto.rpc.GetAllResponse.prototype.getRes = function() {
-  return /** @type{?proto.account.AccountArray} */ (
-    jspb.Message.getWrapperField(this, account_pb.AccountArray, 1));
+proto.rpc.GetAllResponse.prototype.getAccountList = function() {
+  return /** @type{!Array<!proto.account.Account>} */ (
+    jspb.Message.getRepeatedWrapperField(this, account_pb.Account, 1));
 };
 
 
 /**
- * @param {?proto.account.AccountArray|undefined} value
+ * @param {!Array<!proto.account.Account>} value
  * @return {!proto.rpc.GetAllResponse} returns this
 */
-proto.rpc.GetAllResponse.prototype.setRes = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+proto.rpc.GetAllResponse.prototype.setAccountList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * @param {!proto.account.Account=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.account.Account}
+ */
+proto.rpc.GetAllResponse.prototype.addAccount = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.account.Account, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.rpc.GetAllResponse} returns this
  */
-proto.rpc.GetAllResponse.prototype.clearRes = function() {
-  return this.setRes(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.rpc.GetAllResponse.prototype.hasRes = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.rpc.GetAllResponse.prototype.clearAccountList = function() {
+  return this.setAccountList([]);
 };
 
 

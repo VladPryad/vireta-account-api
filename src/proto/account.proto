@@ -1,14 +1,6 @@
 syntax = "proto3";
 package account;
 
-message AccountRequest {
-
-}
-
-message AccountArray {
-    repeated Account account = 1;
-}
-
 message Account {
     string id = 1;
     string login = 2;
