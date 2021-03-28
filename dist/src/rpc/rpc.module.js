@@ -6,21 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccountModule = void 0;
+exports.RpcModule = void 0;
 const common_1 = require("@nestjs/common");
-const account_service_1 = require("./account.service");
-const account_controller_1 = require("./account.controller");
-const typeorm_1 = require("@nestjs/typeorm");
-const account_entity_1 = require("./account.entity");
-let AccountModule = class AccountModule {
+const rpc_service_1 = require("./rpc.service");
+const rpc_controller_1 = require("./rpc.controller");
+const account_module_1 = require("../account/account.module");
+let RpcModule = class RpcModule {
 };
-AccountModule = __decorate([
+RpcModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([account_entity_1.default])],
-        providers: [account_service_1.AccountService],
-        controllers: [account_controller_1.AccountController],
-        exports: [account_service_1.AccountService]
+        imports: [account_module_1.AccountModule],
+        providers: [rpc_service_1.RpcService],
+        controllers: [rpc_controller_1.RpcController]
     })
-], AccountModule);
-exports.AccountModule = AccountModule;
-//# sourceMappingURL=account.module.js.map
+], RpcModule);
+exports.RpcModule = RpcModule;
+//# sourceMappingURL=rpc.module.js.map

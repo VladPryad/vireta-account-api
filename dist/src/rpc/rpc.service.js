@@ -6,18 +6,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.RpcService = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const ormconfig_1 = require("../ormconfig");
-const account_module_1 = require("./account/account.module");
-const rpc_module_1 = require("./rpc/rpc.module");
-let AppModule = class AppModule {
+let RpcService = class RpcService {
 };
-AppModule = __decorate([
-    common_1.Module({
-        imports: [account_module_1.AccountModule, typeorm_1.TypeOrmModule.forRoot(ormconfig_1.default), rpc_module_1.RpcModule]
-    })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+RpcService = __decorate([
+    common_1.Injectable()
+], RpcService);
+exports.RpcService = RpcService;
+//# sourceMappingURL=rpc.service.js.map

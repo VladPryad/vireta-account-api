@@ -5,6 +5,8 @@ export declare class AccountController {
     private readonly accountService;
     constructor(accountService: AccountService);
     getById(id: string): Account;
-    getAll(): Promise<Account[]>;
+    getAll(): {
+        account: Promise<Account[]>;
+    };
     create(createAccountDto: CreateAccountDTO): Account;
 }

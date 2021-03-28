@@ -23,6 +23,6 @@ export class AccountService {
     }
 
     async getAll(): Promise<Account[]> {
-        return this.accountRepository.find();
+        return await this.accountRepository.find();
     }
  }

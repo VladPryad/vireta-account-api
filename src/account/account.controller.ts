@@ -1,4 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
+import { Metadata, ServerUnaryCall } from 'grpc';
 import Account from './account.entity';
 import { AccountService } from './account.service';
 import CreateAccountDTO from './dto/create-account.dto';
@@ -12,9 +14,8 @@ export class AccountController {
         return this.accountService.getById(id);
     }
 
-    @Get()
-    getAll(): Promise<Account[]> {
-        return this.accountService.getAll();
+    getAll(): { account: Promise<Account[]> } {
+        return { account: this.accountService.getAll() };
     }
 
     @Post()

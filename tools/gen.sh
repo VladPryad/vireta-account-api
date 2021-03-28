@@ -1,0 +1,1 @@
+protoc --js_out=import_style=commonjs,binary:codegen -Isrc/proto src/proto/*.proto

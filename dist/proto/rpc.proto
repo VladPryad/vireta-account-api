@@ -1,0 +1,16 @@
+syntax = "proto3";
+package rpc;
+
+import "account.proto";
+
+service RPC {
+  rpc GetAll(GetAllRequest) returns (GetAllResponse) {}
+}
+
+message GetAllRequest {
+  account.AccountRequest req = 1;
+}
+
+message GetAllResponse {
+  account.AccountArray res = 1;
+}

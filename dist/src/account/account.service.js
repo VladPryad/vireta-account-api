@@ -31,7 +31,7 @@ let AccountService = class AccountService {
         return acc;
     }
     async getAll() {
-        return this.accountRepository.find();
+        return await this.accountRepository.find();
     }
 };
 AccountService = __decorate([
