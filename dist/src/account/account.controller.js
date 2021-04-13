@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountController = void 0;
 const common_1 = require("@nestjs/common");
-const account_entity_1 = require("./account.entity");
 const account_service_1 = require("./account.service");
 const create_account_dto_1 = require("./dto/create-account.dto");
 let AccountController = class AccountController {
@@ -36,7 +35,7 @@ __decorate([
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", account_entity_1.default)
+    __metadata("design:returntype", Promise)
 ], AccountController.prototype, "getById", null);
 __decorate([
     common_1.Get(),
@@ -50,7 +49,7 @@ __decorate([
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_account_dto_1.default]),
-    __metadata("design:returntype", account_entity_1.default)
+    __metadata("design:returntype", Promise)
 ], AccountController.prototype, "create", null);
 AccountController = __decorate([
     common_1.Controller('account'),

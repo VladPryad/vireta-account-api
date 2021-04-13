@@ -10,7 +10,7 @@ export class AccountController {
     constructor(private readonly accountService: AccountService) {}
 
     @Get(':id')
-    getById(@Param('id') id: string): Account {
+    getById(@Param('id') id: string): Promise<Account> {
         return this.accountService.getById(id);
     }
 
@@ -21,7 +21,7 @@ export class AccountController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    create(@Body() createAccountDto: CreateAccountDTO): Account {
+    create(@Body() createAccountDto: CreateAccountDTO): Promise<Account> {
         return this.accountService.create(createAccountDto);
     }
 }

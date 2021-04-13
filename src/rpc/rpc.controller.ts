@@ -25,6 +25,6 @@ export class RpcController {
 
     @GrpcMethod("RPC", "GetAllPotsByAccountId")
     async getAllPotsByAccountId(id: string): Promise<Pot[]> {
-        return this.potController.getAllPotsByAccountId(id);
+        return await this.potController.getAllPotsByAccountId(id);
     }
 }

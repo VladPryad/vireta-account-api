@@ -25,7 +25,7 @@ let RpcController = class RpcController {
         return { account: accounts };
     }
     async getAllPotsByAccountId(id) {
-        return this.potController.getAllPotsByAccountId(id);
+        return await this.potController.getAllPotsByAccountId(id);
     }
 };
 __decorate([

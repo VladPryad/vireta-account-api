@@ -11,18 +11,23 @@ export class AccountService {
         private accountRepository: Repository<Account>,
       ) {}
 
-    getById(id: string): Account {
-        return new Account();
+    getById(id: string): Promise<Account> {
+        return this.accountRepository.findOne({
+            where: {
+                id
+            }
+        });
     }
 
-    create(dto: CreateAccountDTO): Account {
+    create(dto: CreateAccountDTO): Promise<Account> {
         const acc = new Account();
         acc.login = dto.login;
         acc.password = dto.password;
-        return acc;
+        acc.googleId = dto.googleId || ""; 
+        return this.accountRepository.save(acc);
     }
 
     async getAll(): Promise<Account[]> {
-        return await this.accountRepository.find();
+        return this.accountRepository.find();
     }
  }

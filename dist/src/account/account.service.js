@@ -22,16 +22,21 @@ let AccountService = class AccountService {
         this.accountRepository = accountRepository;
     }
     getById(id) {
-        return new account_entity_1.default();
+        return this.accountRepository.findOne({
+            where: {
+                id
+            }
+        });
     }
     create(dto) {
         const acc = new account_entity_1.default();
         acc.login = dto.login;
         acc.password = dto.password;
-        return acc;
+        acc.googleId = dto.googleId || "";
+        return this.accountRepository.save(acc);
     }
     async getAll() {
-        return await this.accountRepository.find();
+        return this.accountRepository.find();
     }
 };
 AccountService = __decorate([
