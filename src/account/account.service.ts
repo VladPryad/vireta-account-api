@@ -19,6 +19,31 @@ export class AccountService {
         });
     }
 
+    async findOne(username: string): Promise<Account> {
+        return this.accountRepository.findOne({
+            where: {
+                login: username
+            }
+        });
+    }
+
+    async logIn(username: String, password: String): Promise<{ isLoggedIn: Boolean, token: String, login:String, id: String}> {
+        const user = await this.accountRepository.findOne({
+            where: {
+                login: username,
+                password: password
+            }
+        });
+
+        if(!user) return { isLoggedIn: false, token: null, login: null, id: null };
+        return {
+            isLoggedIn: true,
+            token: user.googleId,
+            login: user.login,
+            id: user.id
+        }
+    }
+
     create(dto: CreateAccountDTO): Promise<Account> {
         const acc = new Account();
         acc.login = dto.login;

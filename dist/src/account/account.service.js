@@ -28,6 +28,29 @@ let AccountService = class AccountService {
             }
         });
     }
+    async findOne(username) {
+        return this.accountRepository.findOne({
+            where: {
+                login: username
+            }
+        });
+    }
+    async logIn(username, password) {
+        const user = await this.accountRepository.findOne({
+            where: {
+                login: username,
+                password: password
+            }
+        });
+        if (!user)
+            return { isLoggedIn: false, token: null, login: null, id: null };
+        return {
+            isLoggedIn: true,
+            token: user.googleId,
+            login: user.login,
+            id: user.id
+        };
+    }
     create(dto) {
         const acc = new account_entity_1.default();
         acc.login = dto.login;

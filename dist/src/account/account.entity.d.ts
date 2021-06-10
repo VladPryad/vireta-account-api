@@ -1,5 +1,5 @@
 export default class Account {
-    id: number;
+    id: string;
     login: string;
     password: string;
     googleId: string;

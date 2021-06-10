@@ -5,6 +5,11 @@ export declare class AccountController {
     private readonly accountService;
     constructor(accountService: AccountService);
     getById(id: string): Promise<Account>;
-    getAll(): Promise<Account[]>;
+    logIn(req: any): Promise<{
+        isLoggedIn: Boolean;
+        token: String;
+        login: String;
+        id: String;
+    }>;
     create(createAccountDto: CreateAccountDTO): Promise<Account>;
 }

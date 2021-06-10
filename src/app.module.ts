@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import ormconfig from 'ormconfig';
 import { AccountModule } from './account/account.module';
 import { RpcModule } from './rpc/rpc.module';
+//import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [AccountModule, TypeOrmModule.forRoot(ormconfig), RpcModule]

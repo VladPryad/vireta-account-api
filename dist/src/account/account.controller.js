@@ -23,8 +23,8 @@ let AccountController = class AccountController {
     getById(id) {
         return this.accountService.getById(id);
     }
-    getAll() {
-        return this.accountService.getAll();
+    logIn(req) {
+        return this.accountService.logIn(req.query.username, req.query.password);
     }
     create(createAccountDto) {
         return this.accountService.create(createAccountDto);
@@ -39,10 +39,11 @@ __decorate([
 ], AccountController.prototype, "getById", null);
 __decorate([
     common_1.Get(),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], AccountController.prototype, "getAll", null);
+], AccountController.prototype, "logIn", null);
 __decorate([
     common_1.Post(),
     common_1.HttpCode(common_1.HttpStatus.CREATED),
